@@ -1,16 +1,30 @@
+var stockGroups = [
+    {
+    id: 1,
+    name: 'mobiles'
+    },
+    {
+        id: 2,
+        name: 'kitchen_appliances'
+    }
+]
 exports.addStockGroup = function addStockGroup (req, res){
-    console.log('post method called')
-    res.json('hello')
+    let newID = stockGroups[stockGroups.length-1].id;
+    stockGroups.push(req.body);
+    res.json(stockGroups);
 }
 
 exports.getStockGroup = function getStockGroup(req, res) {
-    console.log('get method called');
-    res.json('hello');
+    id = req.params.id;
+    let item = stockGroups.find((i) => i.id == id);
+    if(item)
+        res.json(item);
+    else
+        res.json('Item Not found');
 }
 
 exports.getStockGroups = function getStockGroups(req, res) {
-    console.log('get all method called');
-    res.json('hello');
+    res.json(stockGroups);
 }
 
 exports.updateStockGroup = function updateStockGroup(req, res) {
