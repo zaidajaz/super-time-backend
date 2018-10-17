@@ -1,17 +1,18 @@
-var stockGroups = [
-    {
-    id: 1,
-    name: 'mobiles'
-    },
-    {
-        id: 2,
-        name: 'kitchen_appliances'
-    }
-]
+const dbCon = require('../../configurations/database.config');
+stockGroups = [];
+
 exports.addStockGroup = function addStockGroup (req, res){
-    let newID = stockGroups[stockGroups.length-1].id;
-    stockGroups.push(req.body);
-    res.json(stockGroups);
+    dbCon.connect();
+    let query = 'INSERT INTO TEST_TABLE VALUES (NULL, ?)'
+    let param = JSON.parse(JSON.stringify(req.body));
+    param.forEach(element => {
+        dbCon.query(query,element.name,function(err, rows, fields) {
+            if(err) throw err;
+            console.log('inserted');
+        });
+    });
+    res.json('all products inserted');
+    dbCon.end();
 }
 
 exports.getStockGroup = function getStockGroup(req, res) {
