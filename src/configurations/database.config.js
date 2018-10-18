@@ -1,9 +1,10 @@
 var mysql = require('mysql')
-const connection = mysql.createConnection({
+const connection = mysql.createPool({
+  connectionLimit: 10,
   host     : 'localhost',
   user     : 'root',
   password : 'diaz06041994',
-  database : 'test_db'
+  database : 'super_time'
 });
 
 // connection.connect()

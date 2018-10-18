@@ -1,31 +1,24 @@
-const dbCon = require('../../configurations/database.config');
+const dbFunctions = require('../../shared.module/generic.handlers/dbFunctions');
+const sqlQueries = require('../constants/sqlQueries');
+const sqlErrHandler = require('../../shared.module/errorhandlers/sqlerrorhandlers');
 stockGroups = [];
 
 exports.addStockGroup = function addStockGroup (req, res){
-    dbCon.connect();
-    let query = 'INSERT INTO TEST_TABLE VALUES (NULL, ?)'
     let param = JSON.parse(JSON.stringify(req.body));
-    param.forEach(element => {
-        dbCon.query(query,element.name,function(err, rows, fields) {
-            if(err) throw err;
-            console.log('inserted');
-        });
+    dbFunctions.executeQuery(sqlQueries.queries.insert_stockGroup, param.name, (obj)=>{
+        if(obj.sqlErr) {
+            res.json('SQL ERROR')
+            console.log('SQL Error');
+        }
+        if(obj.conErr) {
+            res.json('Connection Error');
+            console.log('Connection Error');
+        }
+        if(obj.rows) {
+            res.json('Success');
+            console.log('Success');
+        }
     });
-    res.json('all products inserted');
-    dbCon.end();
-}
-
-exports.getStockGroup = function getStockGroup(req, res) {
-    id = req.params.id;
-    let item = stockGroups.find((i) => i.id == id);
-    if(item)
-        res.json(item);
-    else
-        res.json('Item Not found');
-}
-
-exports.getStockGroups = function getStockGroups(req, res) {
-    res.json(stockGroups);
 }
 
 exports.updateStockGroup = function updateStockGroup(req, res) {
