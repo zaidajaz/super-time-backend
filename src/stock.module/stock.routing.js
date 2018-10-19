@@ -4,9 +4,9 @@ const controllers = require('./controllers/index');
 
 
 stockRouter.post('/stockgroup', controllers.addStockGroup);
-// stockRouter.get('/stockgroup', controllers.getStockGroups);
-// stockRouter.get('/stockgroup/:id', controllers.getStockGroup);
+stockRouter.get('/stockgroup', controllers.getStockGroups);
+stockRouter.get('/stockgroup/:id', controllers.getStockGroup);
 stockRouter.put('/stockgroup/:id', controllers.updateStockGroup);
-stockRouter.delete('/stockgroup/:id', controllers.deleteStockGroup);
+stockRouter.delete('/stockgroup/', controllers.deleteStockGroup);
 
 module.exports = stockRouter;

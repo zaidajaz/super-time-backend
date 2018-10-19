@@ -1,10 +1,12 @@
-exports.handleSqlError = function(err) {
-    switch(err.code) {
-        case 'ER_EMPTY_QUERY':
-            return err.sqlMessage;
-        case 'ER_DUP_ENTRY':
-            return 'Item already Exits';
-        default:
-            return 'Something Went Wrong - (CODE SEH001)'
+exports.handleSqlError = function(sqlResObj) {
+    if(sqlResObj.sqlErr) {
+        console.log(sqlResObj.sqlErr);
+       return {valid: false, messages: [sqlResObj.sqlErr.code], response: null};
+    }
+    if(sqlResObj.conErr) {
+        return {valid: false, messages: ['Connection Error'], response: null};
+    }
+    if(sqlResObj.rows) {
+        return {valid: true, messages: ['Success'], response: sqlResObj.rows};
     }
 }
