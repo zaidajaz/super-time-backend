@@ -1,0 +1,16 @@
+Sample JSON inputs
+
+1. Create new Customer
+
+{
+	"list": 
+	[
+		"8800546491",
+		"Zaid",
+		"Delhi",
+		"ajazzaid@gmail.com",
+		null,
+		"admin",
+		"admin"
+	]
+}

@@ -1,0 +1,21 @@
+Sample JSON inputs
+
+1. Add to Sales Header
+
+{
+	"cust_id": "8800546491",
+	"salesperson": "admin"
+}
+
+2. Add Items to Bill
+
+{
+	"list": [
+		{
+			"bill_id": 1,
+			"item_id": 1,
+			"qty": 1,
+			"amount": 100
+		}
+	]
+}

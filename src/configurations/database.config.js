@@ -4,9 +4,21 @@ const connection = mysql.createPool({
   host     : 'localhost',
   user     : 'root',
   password : 'diaz06041994',
-  database : 'super_time',
+  database : 'super_time_app',
   multipleStatements: true
 });
+
+// const connection = mysql.createPool({
+//   connectionLimit: 10,
+//   host     : '148.66.136.68',
+//   port: '3306',
+//   user     : 'zaid_forST',
+//   password : 'diaz06041994',
+//   database : 'super_time_app',
+//   multipleStatements: true
+// });
+
+
 
 // connection.connect()
 

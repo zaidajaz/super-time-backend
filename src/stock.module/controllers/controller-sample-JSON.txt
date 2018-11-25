@@ -1,0 +1,23 @@
+Sample JSON inputs
+
+1. Create new Stock item
+
+{
+	"list": 
+	[
+		"Samsung J11",
+		"7000000",
+		"admin",
+		"admin"
+	]
+}
+
+2. Change Stock item quantity (purchase/transfer)
+
+{
+	"action": "d",
+	"reason": "transfer",
+	"qty": 3,
+	"modified_by": "admin",
+	"inv_id":"1"
+}
