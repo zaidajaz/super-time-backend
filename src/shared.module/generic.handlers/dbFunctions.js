@@ -2,7 +2,7 @@ const dbCon = require('../../configurations/database.config');
 exports.executeQuery=function(query,params,callback){
     dbCon.getConnection(function(err,connection){
         if (err) {
-          connection.release();
+        //   connection.release();
           callback({conErr: err});
         }   
         connection.query(query,params,function(err,rows){
