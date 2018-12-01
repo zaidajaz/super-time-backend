@@ -14,8 +14,10 @@ exports.executeQuery=function(query,params,callback){
                 callback({sqlErr: err});  
             }    
         });
-        connection.on('error', function(err) {      
-              throw err;  
-        });
+        // connection.on('error', function(err) {      
+        //       if(err.code === 'PROTOCOL_CONNECTION_LOST')  {
+
+        //       }
+        // });
     });
 }
