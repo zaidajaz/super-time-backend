@@ -10,7 +10,7 @@ exports.queries = {
     update_stockItem: 'UPDATE st_inventory SET name = ? WHERE id = ?;',
     delete_stockItem: 'DELETE FROM st_inventory WHERE id = ?;',
     search_stockItems: 'SELECT * FROM st_inventory order by product_name;',
-    search_stockItems_filtered: 'SELECT * FROM st_inventory where product_name like ?;',
+    search_stockItems_filtered: 'SELECT * FROM st_inventory where product_name like ? order by product_name;',
     search_stockItem: 'SELECT * FROM st_inventory where id = ?;',
 
     //modify stock quantity
